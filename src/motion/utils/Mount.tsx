@@ -18,7 +18,7 @@ interface MountProps {
 const MountComponent = ({ innerRef: ref, values, isStatic }: MountProps) => {
     useEffect(() => {
         invariant(
-            ref.current instanceof Element,
+            !!ref.current && ref.current.constructor.name.endsWith("Element"),
             "No `ref` found. Ensure components created with `motion.custom` forward refs using `React.forwardRef`"
         )
 
